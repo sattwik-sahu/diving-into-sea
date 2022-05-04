@@ -7,10 +7,6 @@
 
 #include <stdio.h>
 
-int absolute(int x) {
-  return (x > 0) ? x : -x;
-}
-
 int main() {
   int n;
   printf("No. of rows? >> ");
