@@ -1,7 +1,11 @@
 /*
  * Name: Sattwik Kumar Sahu
  * Roll No.: 21241
+<<<<<<< HEAD
  * Date: 2022-05-05
+=======
+ * Date: 2022-05-04
+>>>>>>> 7d17553 (Week-4 Q2,3,4)
  * Project: Check is string is a palindrome
  */
 
