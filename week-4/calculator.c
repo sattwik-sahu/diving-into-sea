@@ -1,7 +1,7 @@
 /*
  * Name: Sattwik Kumar Sahu
  * Roll No.: 21241
- * Date: 2022-05-04
+ * Date: 2022-05-05
  * Project: Create smple simple calculator in C
  */
 #include <stdio.h>
