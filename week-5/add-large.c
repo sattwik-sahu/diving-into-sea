@@ -24,8 +24,6 @@ int main() {
   int padding = maxDigits - minDigits;
   int carry = 0;
 
-  // printf("max & min digits = %d, %d\n\n", maxDigits, minDigits);
-
   int n1[maxDigits], n2[maxDigits];
   for (int i = 0; i < maxDigits; i++) {
     if (i < padding) {
