@@ -21,11 +21,7 @@ int main() {
       printf(" ");
 
     // LCV goes from -row...0...+row
-<<<<<<< HEAD
-    for (int col = -row; col < row + 1; col++)
-=======
     for (int col = -row; col <= row; col++)
->>>>>>> 39e32a9 (Created Q1 program)
       // Print (nCols - abs(col)) % 10
       printf("%d", (nCols - ((col > 0) ? col : -col)) % 10);
     printf("\n");
