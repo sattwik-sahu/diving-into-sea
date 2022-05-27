@@ -1,127 +1,85 @@
-/*
-Name : Sattwik Kumar Sahu
-Roll No. : 21241
-Date : 2022-05-12
-description: Find product of two large numbers not fitting in long long int
-*/
-
-<<<<<<< HEAD
-#include <math.h>
 #include <stdio.h>
 #include <string.h>
-#define MAXLEN 256
 
+char *multiply(char num1[100], char num2[100]) {
+  int len1 = strlen(num1);
+  int len2 = strlen(num2);
+  if (len1 == 0 || len2 == 0)
+    return "0";
+
+  // will keep the result number in vector
+  // in reverse order
+  int result[200];
+
+  // Below two indexes are used to find positions
+  // in result.
+  int i_n1 = 0;
+  int i_n2 = 0;
+
+  // Go from right to left in num1
+  for (int i = len1 - 1; i >= 0; i--) {
+    int carry = 0;
+    int n1 = num1[i] - '0';
+
+    // To shift position to left after every
+    // multiplication of a digit in num2
+    i_n2 = 0;
+
+    // Go from right to left in num2
+    for (int j = len2 - 1; j >= 0; j--) {
+      // Take current digit of second number
+      int n2 = num2[j] - '0';
+
+      // Multiply with current digit of first number
+      // and add result to previously stored result
+      // at current position.
+      int sum = n1 * n2 + result[i_n1 + i_n2] + carry;
+
+      // Carry for next iteration
+      carry = sum / 10;
+
+      // Store result
+      result[i_n1 + i_n2] = sum % 10;
+
+      i_n2++;
+    }
+
+    // store carry in next cell
+    if (carry > 0)
+      result[i_n1 + i_n2] += carry;
+
+    // To shift position to left after every
+    // multiplication of a digit in num1.
+    i_n1++;
+  }
+
+  // ignore '0's from the right
+  int i = (sizeof(result) / sizeof(result[0])) - 1;
+  while (i >= 0 && result[i] == 0)
+    i--;
+
+  // If all were '0's - means either both or
+  // one of num1 or num2 were '0'
+  if (i == -1)
+    return "0";
+
+  // generate the result string
+  char *s = "";
+
+  while (i >= 0)
+    s += '0' + result[i--];
+
+  return s;
+}
+
+// Driver code
 int main() {
-  char str1[MAXLEN], str2[MAXLEN];
-  printf("1st number:\t");
-  scanf(" %s", str1);
-  printf("2nd Number:\t");
-  scanf(" %s", str2);
+  char str1[100] = "1235421415454545";
+  char str2[100] = "171444544545";
 
-  int len1 = strlen(str1);
-  int len2 = strlen(str2);
+  if ((str1[0] == '-' || str2[0] == '-') && (str1[0] != '-' || str2[0] != '-'))
+    printf("-");
 
-  // Store reversed array after converting char -> int
-  int num1[MAXLEN], num2[MAXLEN];
-  for (int i = (len1 > len2 ? len1 : len2) - 1, j = 0; i >= 0; i--, j++) {
-    if (i < len1)
-      num1[len1 - i] = str1[i] - '0';
-    if (i < len2)
-      num1[len2 - i] = str1[i] - '0';
-  }
-
-  int additionMatrix[MAXLEN][MAXLEN];
-  int carry;
-  for (int inx1 = 0; inx1 < len1; inx1++) {
-    for (int i = 0; i < inx1; i++)
-      additionMatrix[inx1][i] = 0;
-    for (int inx2 = 0; inx2 < len2; inx2++) {
-      int mult = num1[inx1] * num2[inx2];
-      carry = mult % 10;
-      additionMatrix[inx1][inx1 + inx2] = mult / 10;
-      if (inx2 == len2 - 1 && carry > 0) {
-        inx2++;
-        additionMatrix[inx1][inx1 + inx2] = carry;
-      }
-      if (inx2 == len2 - 1)
-        additionMatrix[inx1][inx1 + inx2 + 1] = -1;
-    }
-  }
-
-  for (int i = 0; i < len1; i++) {
-    for (int j = 0; additionMatrix[i][j] > -1; j++) {
-      printf("%d ", additionMatrix[i][j]);
-    }
-    printf("\n");
-  }
-
-    // for (int i = len1 + len2; i >= 0; i--) {
-    //   if (additionMatrix[i] > 0)
-    //     break;
-    // }
-
-    // for (int i = 0; i >= 0; i--) {
-    //   printf("%d", additionMatrix[i]);
-    // }
-
-    return 0;
-=======
-#include <stdio.h>
-#include <string.h>
-
-int main()
-{
-int a[100],b[100];
-int ans[200]={0};
-int i,j,tmp;
-char s1[101],s2[101];
-
-printf("Enter the first number=");
-scanf(" %s",s1);
-printf("Enter the second number=");
-scanf(" %s",s2);
-
-int l1 = strlen(s1);
-int l2 = strlen(s2);
-
-for(i = l1-1,j=0;i>=0;i--,j++)
-    {
-        a[j] = s1[i]-'0';
-    }
-
-for(i = l2-1,j=0; i>=0; i--, j++)
-    {
-        b[j] = s2[i]-'0';
-    }
-
-for(i = 0;i < l2; i++)
-    {
-        for(j = 0;j < l1; j++)
-        {
-            ans[i+j] += b[i]*a[j];
-        }
-    }
-
-for(i = 0;i < l1+l2;i++)
-    {
-        tmp = ans[i]/10;
-        ans[i] = ans[i]%10;
-        ans[i+1] = ans[i+1] + tmp;
-    }
-
-for(i = l1+l2; i>= 0;i--)
-    {
-        if(ans[i] > 0)
-break;
-    }
-
-printf("Product : ");
-
-for(;i >= 0;i--)
-    {
-        printf("%d",ans[i]);
-    }
-
-return 0;
->>>>>>> b0ea950 (Completed lab week-5)
+  printf("ans = %s", multiply(str1, str2));
+  return 0;
 }
