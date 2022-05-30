@@ -1,6 +1,6 @@
 /*
- * Name: Sattwik Kumar Sahu
- * Roll No.: 21241
+ * Name: Anushri Arun Pawar
+ * Roll No.: 21206
  * Date: 2022-05-05
  * Project: To print pyramid as given in Q3
  */
