@@ -2,9 +2,15 @@
 #define MAXSIZE 1024
 
 int main() {
-  // Somehow input two polynomials
+  // Input two polynomials
   int deg1, deg2;
   int coeff1[MAXSIZE], coeff2[MAXSIZE], ansCoeff[MAXSIZE];
+
+  /*
+  * Polynomials are input by coeffs
+  * Coeffs are input from x^0 to x^d
+  * where d is the degree of the polynomial
+  */
 
   printf("Polynomial #1:\n");
   printf("Degree?\n>>> ");
