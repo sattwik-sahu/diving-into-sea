@@ -11,10 +11,10 @@
 
 int **getSquareMatrix(int dim) {
   int **mat;
+
   mat = (int **)malloc(dim * sizeof(int *));
-  for (int i = 0; i < dim; i++) {
+  for (int i = 0; i < dim; i++)
       mat[i] = (int *) malloc(dim * sizeof(int));
-  }
 
   for (int i = 0; i < dim; i++) {
     for (int j = 0; j < dim; j++) {
@@ -30,9 +30,8 @@ int **getSquareMatrix(int dim) {
 void printMatrix(int dim, int ** mat) {
     printf("[\n");
     for (int i = 0; i < dim; i++) {
-        for (int j = 0; j < dim; j++) {
-            printf("%4d ", *(*(mat + i) + j));
-        }
+        for (int j = 0; j < dim; j++)
+            printf("%4d", mat[i][j]);
         printf("\n");
     }
   printf("]\n\n");

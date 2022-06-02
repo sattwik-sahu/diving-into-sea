@@ -15,15 +15,10 @@ int **getSubmatrix(int dim, int **matrix, int remRow, int remCol) {
     susmat[i] = (int *)malloc((dim - 1) * sizeof(int));
   }
 
-  for (int i = 0; i < dim; i++) {
-    for (int j = 0; j < dim; j++) {
-      if (i != remRow && j != remCol) {
-        int i_ = i - (i > remRow ? 1 : 0);
-        int j_ = j - (j > remCol ? 1 : 0);
-        susmat[i_][j_] = matrix[i][j];
-      }
-    }
-  }
+  for (int i = 0; i < dim; i++)
+    for (int j = 0; j < dim; j++)
+      if (i != remRow && j != remCol)
+        susmat[i - (i > remRow)][j - (j > remCol)] = matrix[i][j];
 
   return susmat;
 }
