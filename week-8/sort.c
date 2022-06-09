@@ -45,5 +45,7 @@ int main() {
     printf("\nSorted [DESC] array:\n");
     printArray(size, arr);
 
+    free(arr);
+
     return 0;
 }
