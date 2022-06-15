@@ -24,8 +24,6 @@ void permute(char *a, int l, int r) {
     for (i = l; i <= r; i++) {
       swapChar((a + l), (a + i));
       permute(a, l + 1, r);
-
-      // backtrack
       swapChar((a + l), (a + i));
     }
   }
